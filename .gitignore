@@ -5,3 +5,6 @@ recordings
 nssm.exe
 push.py
 assistant.log
+piper
+voice.onnx
+voice.onnx.json

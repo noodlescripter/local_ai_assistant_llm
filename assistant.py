@@ -17,9 +17,9 @@ class CustomAssistant:
         self.engine = pyttsx3.init()
         
         # Configure OpenAI
-        if not self.openai_api_key:
-            raise ValueError("OpenAI API key not found in environment variables")
-        openai.api_key = self.openai_api_key
+        # if not self.openai_api_key:
+        #     raise ValueError("OpenAI API key not found in environment variables")
+        # openai.api_key = self.openai_api_key
         
         # Configure voice settings
         voices = self.engine.getProperty('voices')
@@ -38,8 +38,10 @@ class CustomAssistant:
         """Convert text to speech with error handling"""
         try:
             print(f"Assistant: {text}")
-            self.engine.say(text)
-            self.engine.runAndWait()
+            #self.engine.say(text)
+            #self.engine.runAndWait()
+            os.system(f'echo "{text}" | ./piper --model voice.onnx --output_raw | aplay -r 22050 -f S16_LE -t raw -')
+            
         except Exception as e:
             print(f"Speech error: {e}")
             
@@ -96,7 +98,7 @@ class CustomAssistant:
             return "I apologize, but I'm having trouble generating a response right now. Are you sure your local language model is running? Please check and try again."
             
     async def generate_response(self, text):
-        """Generate a contextual response using OpenAI"""
+        """Generate a contextual responseusing OpenAI"""
         # Convert text to lowercase for easier matching
         text = text.lower()
         

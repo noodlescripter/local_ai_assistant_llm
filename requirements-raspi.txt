@@ -1,0 +1,5 @@
+SpeechRecognition
+requests
+openai
+python-dotenv
+pyinstaller
